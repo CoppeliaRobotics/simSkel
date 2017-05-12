@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml-stylesheet type="text/xsl" href="callbacks.xsl"?>
+
+<plugin name="PluginSkeletonNG" author="federico.ferri.it@gmail.com">
+    <description>An example plugin to demonstrate the usage of v_repStubsGen</description>
+    <command name="test">
+        <description>Do something not much useful.</description>
+        <params>
+            <param name="a" type="int">
+                <description>An integer argument</description>
+            </param>
+            <param name="b" type="string">
+                <description>An string argument</description>
+            </param>
+            <param name="c" type="table" item-type="float">
+                <description>A vector of floats</description>
+            </param>
+        </params>
+        <return>
+            <param name="x" type="float">
+                <description>A float return value</description>
+            </param>
+            <param name="y" type="string">
+                <description>A string return value</description>
+            </param>
+        </return>
+    </command>
+</plugin>
