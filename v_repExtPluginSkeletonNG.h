@@ -27,3 +27,7 @@
 // Federico Ferri <federico.ferri.it at gmail dot com>
 // -------------------------------------------------------------------
 
+#ifndef VREP_EXT_PLUGIN_SKELETON_NG_H_INCLUDED
+#define VREP_EXT_PLUGIN_SKELETON_NG_H_INCLUDED
+
+#endif // VREP_EXT_PLUGIN_SKELETON_NG_H_INCLUDED
