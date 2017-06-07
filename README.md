@@ -8,5 +8,6 @@ This is an example of developing V-REP plugins using the [v_repStubsGen](http://
 2. Checkout and compile
 ```
 $ git clone --recursive https://github.com/fferri/v_repExtPluginSkeletonNG.git
-$ make
+$ cmake .
+$ cmake --build .
 ```

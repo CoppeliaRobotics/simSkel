@@ -19,3 +19,7 @@ Makefile.Debug
 Makefile.Release
 lua_calltips.cpp
 generated
+build
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
