@@ -18,11 +18,8 @@ find_package(Boost REQUIRED)
 #	set(SHLWAPI)
 #endif()
 
-
-if(NOT DEFINED ENV{VREP_ROOT})
-	message(FATAL_ERROR "Environment variable VREP_ROOT is not set")
-endif()
-file(TO_CMAKE_PATH "$ENV{VREP_ROOT}" VREP_ROOT)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
+find_package(VREP REQUIRED)
 
 include_directories(${VREP_ROOT}/programming/include)
 include_directories(${CMAKE_BINARY_DIR}/generated)
