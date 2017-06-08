@@ -12,11 +12,6 @@ find_package(Boost REQUIRED)
 #find_package(Qt5Gui REQUIRED)
 #find_package(Qt5Widgets REQUIRED)
 #find_package(Qt5PrintSupport REQUIRED)
-#if(WIN32)
-#	set(SHLWAPI shlwapi)
-#else()
-#	set(SHLWAPI)
-#endif()
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 find_package(VREP REQUIRED)
@@ -35,6 +30,5 @@ set(SOURCES
     external/v_repPlusPlus/Plugin.cpp
 )
 add_library(v_repExtPluginSkeletonNG SHARED ${SOURCES} ${CMAKE_BINARY_DIR}/generated/stubs.cpp "${VREP_COMMON}/v_repLib.cpp")
-
-target_link_libraries(v_repExtPluginSkeletonNG ${Boost_LIBRARIES})
-#target_link_libraries(v_repExtPluginSkeletonNG ${Boost_LIBRARIES} Qt5::Core Qt5::Gui Qt5::Widgets Qt5::PrintSupport ${SHLWAPI})
+target_link_libraries(v_repExtPluginSkeletonNG ${Boost_LIBRARIES} ${VREP_LIBRARIES})
+#target_link_libraries(v_repExtPluginSkeletonNG ${Boost_LIBRARIES} Qt5::Core Qt5::Gui Qt5::Widgets Qt5::PrintSupport ${VREP_LIBRARIES})
