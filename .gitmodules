@@ -1,6 +1,6 @@
 [submodule "external/v_repStubsGen"]
 	path = external/v_repStubsGen
-	url = https://github.com/fferri/v_repStubsGen
+	url = https://github.com/CoppeliaRobotics/v_repStubsGen
 [submodule "external/v_repPlusPlus"]
 	path = external/v_repPlusPlus
-	url = https://github.com/fferri/v_repPlusPlus
+	url = https://github.com/CoppeliaRobotics/v_repPlusPlus
