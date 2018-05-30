@@ -27,7 +27,7 @@
 // Federico Ferri <federico.ferri.it at gmail dot com>
 // -------------------------------------------------------------------
 
-#include "v_repExtPluginSkeletonNG.h"
+#include "plugin.h"
 #include "v_repPlusPlus/Plugin.h"
 #include "stubs.h"
 
