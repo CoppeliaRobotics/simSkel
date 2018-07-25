@@ -17,7 +17,7 @@ find_package(Boost REQUIRED)
 #find_package(Qt5PrintSupport REQUIRED)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
-find_package(VREP REQUIRED)
+find_package(VREP 3.5.0 REQUIRED)
 
 include_directories(${VREP_INCLUDE})
 include_directories(${CMAKE_BINARY_DIR}/generated)
