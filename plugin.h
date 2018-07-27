@@ -30,6 +30,8 @@
 #ifndef VREP_EXT_PLUGIN_SKELETON_NG_H_INCLUDED
 #define VREP_EXT_PLUGIN_SKELETON_NG_H_INCLUDED
 
+#include "config.h"
+
 #define PLUGIN_NAME "PluginSkeletonNG"
 #define PLUGIN_VERSION 1
 
