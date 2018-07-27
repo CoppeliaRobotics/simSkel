@@ -29,6 +29,8 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 vrep_generate_stubs(${CMAKE_CURRENT_BINARY_DIR}/generated XML_FILE ${CMAKE_CURRENT_SOURCE_DIR}/callbacks.xml LUA_FILE ${CMAKE_CURRENT_SOURCE_DIR}/simExtPluginSkeletonNG.lua)
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h ESCAPE_QUOTES)
+
 set(SOURCES
     plugin.cpp
     external/v_repPlusPlus/Plugin.cpp
