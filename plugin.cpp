@@ -28,7 +28,7 @@
 // -------------------------------------------------------------------
 
 #include "plugin.h"
-#include "v_repPlusPlus/Plugin.h"
+#include "simPlusPlus/Plugin.h"
 #include "stubs.h"
 
 void test(SScriptCallBack *p, const char *cmd, test_in *in, test_out *out)
@@ -45,7 +45,7 @@ void test(SScriptCallBack *p, const char *cmd, test_in *in, test_out *out)
     // ...
 }
 
-class Plugin : public vrep::Plugin
+class Plugin : public sim::Plugin
 {
 public:
     void onStart()
@@ -58,4 +58,4 @@ public:
     }
 };
 
-VREP_PLUGIN("PluginSkeletonNG", 1, Plugin)
+SIM_PLUGIN("PluginSkeletonNG", 1, Plugin)

@@ -27,12 +27,12 @@
 // Federico Ferri <federico.ferri.it at gmail dot com>
 // -------------------------------------------------------------------
 
-#ifndef VREP_EXT_PLUGIN_SKELETON_NG_H_INCLUDED
-#define VREP_EXT_PLUGIN_SKELETON_NG_H_INCLUDED
+#ifndef SIM_PLUGIN_SKELETON_NG_H_INCLUDED
+#define SIM_PLUGIN_SKELETON_NG_H_INCLUDED
 
 #include "config.h"
 
 #define PLUGIN_NAME "PluginSkeletonNG"
 #define PLUGIN_VERSION 1
 
-#endif // VREP_EXT_PLUGIN_SKELETON_NG_H_INCLUDED
+#endif // SIM_PLUGIN_SKELETON_NG_H_INCLUDED

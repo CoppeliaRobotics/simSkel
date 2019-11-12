@@ -1,13 +1,13 @@
-# Plugin Skeleton (new generation) for V-REP
+# Plugin Skeleton (new generation) for CoppeliaSim
 
-This is an example of developing V-REP plugins using the [v_repStubsGen](http://github.com/fferri/v_repStubsGen.git) tool to simplify things a little bit.
+This is an example of developing CoppeliaSim plugins using the [libPlugin](http://github.com/CoppeliaRobotics/libPlugin.git) framework to simplify things a little bit.
 
 ### Compiling
 
-1. Install required packages for [v_repStubsGen](https://github.com/CoppeliaRobotics/v_repStubsGen): see v_repStubsGen's [README](external/v_repStubsGen/README.md)
+1. Install required packages for [libPlugin](https://github.com/CoppeliaRobotics/libPlugin): see libPlugin's [README](external/libPlugin/README.md)
 2. Checkout and compile
 ```
-$ git clone --recursive https://github.com/CoppeliaRobotics/v_repExtPluginSkeletonNG.git
+$ git clone --recursive https://github.com/CoppeliaRobotics/simExtPluginSkeletonNG.git
 $ cmake .
 $ cmake --build .
 ```

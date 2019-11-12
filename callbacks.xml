@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="callbacks.xsl"?>
 
 <plugin name="PluginSkeletonNG" short-name="Skel" author="federico.ferri.it@gmail.com">
-    <description>An example plugin to demonstrate the usage of v_repStubsGen</description>
+    <description>An example plugin to demonstrate the usage of libPlugin</description>
     <command name="test">
         <description>Do something not much useful.</description>
         <params>
