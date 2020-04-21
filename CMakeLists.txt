@@ -43,3 +43,6 @@ set(SOURCES
 add_library(simExtPluginSkeletonNG SHARED ${SOURCES})
 target_link_libraries(simExtPluginSkeletonNG ${Boost_LIBRARIES} ${COPPELIASIM_LIBRARIES})
 #target_link_libraries(simExtPluginSkeletonNG ${Boost_LIBRARIES} Qt5::Core Qt5::Gui Qt5::Widgets Qt5::PrintSupport ${COPPELIASIM_LIBRARIES})
+
+install(TARGETS simExtPluginSkeletonNG DESTINATION ${COPPELIASIM_PLUGINS_DIR})
+
