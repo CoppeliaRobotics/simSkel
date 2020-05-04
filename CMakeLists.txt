@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 2.8.11)
 project(simExtPluginSkeletonNG)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_AUTOMOC ON)
 set(CMAKE_MACOSX_RPATH 1)
 set(CMAKE_CXX_STANDARD 11)
 
@@ -13,6 +12,7 @@ find_package(Boost REQUIRED)
 #find_package(Qt5Gui REQUIRED)
 #find_package(Qt5Widgets REQUIRED)
 #find_package(Qt5PrintSupport REQUIRED)
+#set(CMAKE_AUTOMOC ON)
 
 if(NOT LIBPLUGIN_DIR)
     if(DEFINED ENV{COPPELIASIM_ROOT_DIR})
