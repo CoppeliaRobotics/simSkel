@@ -31,20 +31,6 @@
 #include "simPlusPlus/Plugin.h"
 #include "stubs.h"
 
-void test(SScriptCallBack *p, const char *cmd, test_in *in, test_out *out)
-{
-    // we compute the average of the values in 'c'
-    out->x = 0.0;
-    for(int i = 0; i < in->c.size(); ++i)
-        out->x += in->c[i];
-    out->x /= (float)in->c.size();
-
-    // we can access other input parameters as usual:
-    int a = in->a;
-    std::string b = in->b;
-    // ...
-}
-
 class Plugin : public sim::Plugin
 {
 public:
@@ -56,6 +42,23 @@ public:
         setExtVersion("Example Plugin Skeleton");
         setBuildDate(BUILD_DATE);
     }
+
+    void test(test_in *in, test_out *out)
+    {
+        // we compute the average of the values in 'c'
+        out->x = 0.0;
+        for(int i = 0; i < in->c.size(); ++i)
+            out->x += in->c[i];
+        out->x /= (float)in->c.size();
+
+        // we can access other input parameters as usual:
+        int a = in->a;
+        std::string b = in->b;
+
+        // log a message
+        log(sim_verbosity_warnings, "Message");
+    }
 };
 
 SIM_PLUGIN("PluginSkeletonNG", 1, Plugin)
+#include "stubsPlusPlus.cpp"
