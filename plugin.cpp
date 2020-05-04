@@ -53,8 +53,8 @@ public:
         if(!registerScriptStuff())
             throw std::runtime_error("script stuff initialization failed");
 
-        simSetModuleInfo(PLUGIN_NAME, 0, "Example Plugin Skeleton", 0);
-        simSetModuleInfo(PLUGIN_NAME, 1, BUILD_DATE, 0);
+        setExtVersion("Example Plugin Skeleton");
+        setBuildDate(BUILD_DATE);
     }
 };
 
