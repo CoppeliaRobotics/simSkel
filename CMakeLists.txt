@@ -13,6 +13,7 @@ find_package(Boost REQUIRED)
 #find_package(Qt5Widgets REQUIRED)
 #find_package(Qt5PrintSupport REQUIRED)
 #set(CMAKE_AUTOMOC ON)
+#add_definitions(-DQT_COMPIL)
 
 if(NOT LIBPLUGIN_DIR)
     if(DEFINED ENV{COPPELIASIM_ROOT_DIR})
