@@ -1,4 +1,4 @@
-// Copyright 2016 Coppelia Robotics GmbH. All rights reserved. 
+// Copyright 2016 Coppelia Robotics AG. All rights reserved. 
 // marc@coppeliarobotics.com
 // www.coppeliarobotics.com
 // 
