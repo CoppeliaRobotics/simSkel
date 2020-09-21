@@ -3,25 +3,65 @@
 
 <plugin name="PluginSkeletonNG" short-name="Skel" author="federico.ferri.it@gmail.com">
     <description>An example plugin to demonstrate the usage of libPlugin</description>
-    <command name="test">
-        <description>Do something not much useful.</description>
+    <command name="createObject">
+        <description>Create an instance of the ExampleObject.</description>
         <params>
-            <param name="a" type="int">
-                <description>An integer argument</description>
+        </params>
+        <return>
+            <param name="handle" type="string">
+                <description>handle of the newly created object</description>
             </param>
-            <param name="b" type="string">
-                <description>An string argument</description>
-            </param>
-            <param name="c" type="table" item-type="float">
-                <description>A vector of floats</description>
+        </return>
+    </command>
+    <command name="destroyObject">
+        <description>Create an instance of the ExampleObject.</description>
+        <params>
+            <param name="handle" type="string">
+                <description>handle of the object</description>
             </param>
         </params>
         <return>
-            <param name="x" type="float">
-                <description>A float return value</description>
+        </return>
+    </command>
+    <command name="setData">
+        <description>Create an instance of the ExampleObject.</description>
+        <params>
+            <param name="handle" type="string">
+                <description>handle of the object</description>
             </param>
-            <param name="y" type="string">
-                <description>A string return value</description>
+            <param name="a" type="int">
+                <description>an integer argument</description>
+            </param>
+            <param name="b" type="int">
+                <description>an integer argument</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="compute">
+        <description>Compute some stuff using the data stored in the object.</description>
+        <params>
+            <param name="handle" type="string">
+                <description>handle of the object</description>
+            </param>
+        </params>
+        <return>
+            <param name="currentSize" type="int">
+                <description>Current size of the sequence</description>
+            </param>
+        </return>
+    </command>
+    <command name="getOutput">
+        <description>Get output stored in the object.</description>
+        <params>
+            <param name="handle" type="string">
+                <description>handle of the object</description>
+            </param>
+        </params>
+        <return>
+            <param name="output" type="table" item-type="int">
+                <description>a vector of integers</description>
             </param>
         </return>
     </command>

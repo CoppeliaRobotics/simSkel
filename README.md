@@ -1,6 +1,8 @@
 # Plugin Skeleton (new generation) for CoppeliaSim
 
-This is an example of developing CoppeliaSim plugins using the [libPlugin](http://github.com/CoppeliaRobotics/libPlugin.git) framework to simplify things a little bit.
+This is an example of developing CoppeliaSim plugins using the [libPlugin](http://github.com/CoppeliaRobotics/libPlugin.git) framework.
+
+With libPlugin, callbacks signature and documentation are specified using a single XML file. The build tool will generate additional .cpp and .h files to be compiled along the project, and .html file for the documentation.
 
 ### Compiling
 

@@ -29,7 +29,19 @@
 
 #include "plugin.h"
 #include "simPlusPlus/Plugin.h"
+#include "simPlusPlus/Handle.h"
 #include "stubs.h"
+
+// an example data structure to hold data across multiple calls
+struct ExampleObject
+{
+    int a = 0;
+    int b = 0;
+    std::vector<int> seq;
+};
+
+// conversion from C pointer to string handle and vice-versa:
+template<> std::string sim::Handle<ExampleObject>::tag() { return "Example.Object"; }
 
 class Plugin : public sim::Plugin
 {
@@ -43,20 +55,54 @@ public:
         setBuildDate(BUILD_DATE);
     }
 
-    void test(test_in *in, test_out *out)
+    void createObject(createObject_in *in, createObject_out *out)
     {
-        // we compute the average of the values in 'c'
-        out->x = 0.0;
-        for(int i = 0; i < in->c.size(); ++i)
-            out->x += in->c[i];
-        out->x /= (float)in->c.size();
+        auto obj = new ExampleObject;
 
-        // we can access other input parameters as usual:
-        int a = in->a;
-        std::string b = in->b;
+        out->handle = sim::Handle<ExampleObject>::str(obj);
+    }
 
-        // log a message
-        log(sim_verbosity_warnings, "Message");
+    void destroyObject(destroyObject_in *in, destroyObject_out *out)
+    {
+        auto obj = sim::Handle<ExampleObject>::obj(in->handle);
+        if(!obj)
+            throw std::runtime_error("invalid object handle");
+
+        delete obj;
+    }
+
+    void setData(setData_in *in, setData_out *out)
+    {
+        auto obj = sim::Handle<ExampleObject>::obj(in->handle);
+        if(!obj)
+            throw std::runtime_error("invalid object handle");
+
+        if(!obj->seq.empty())
+            log(sim_verbosity_warnings, "current sequence not empty");
+
+        obj->a = in->a;
+        obj->b = in->b;
+    }
+
+    void compute(compute_in *in, compute_out *out)
+    {
+        auto obj = sim::Handle<ExampleObject>::obj(in->handle);
+        if(!obj)
+            throw std::runtime_error("invalid object handle");
+
+        obj->seq.push_back(obj->a + obj->b);
+        obj->a = obj->b;
+        obj->b = obj->seq.back();
+        out->currentSize = obj->seq.size();
+    }
+
+    void getOutput(getOutput_in *in, getOutput_out *out)
+    {
+        auto obj = sim::Handle<ExampleObject>::obj(in->handle);
+        if(!obj)
+            throw std::runtime_error("invalid object handle");
+
+        out->output = obj->seq;
     }
 };
 
