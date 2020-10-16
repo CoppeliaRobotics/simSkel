@@ -78,7 +78,7 @@ public:
             throw std::runtime_error("invalid object handle");
 
         if(!obj->seq.empty())
-            log(sim_verbosity_warnings, "current sequence not empty");
+            sim::addLog(sim_verbosity_warnings, "current sequence not empty");
 
         obj->a = in->a;
         obj->b = in->b;
