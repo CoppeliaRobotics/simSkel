@@ -27,6 +27,7 @@
 // Federico Ferri <federico.ferri.it at gmail dot com>
 // -------------------------------------------------------------------
 
+#include "config.h"
 #include "plugin.h"
 #include "simPlusPlus/Plugin.h"
 #include "simPlusPlus/Handle.h"
@@ -106,5 +107,5 @@ public:
     }
 };
 
-SIM_PLUGIN("PluginSkeletonNG", 1, Plugin)
+SIM_PLUGIN(PLUGIN_NAME, PLUGIN_VERSION, Plugin)
 #include "stubsPlusPlus.cpp"
