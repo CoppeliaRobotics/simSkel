@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <?xml-stylesheet type="text/xsl" href="callbacks.xsl"?>
 
-<plugin name="PluginSkeletonNG" short-name="Skel" author="federico.ferri.it@gmail.com">
+<plugin name="Skel" short-name="Skel" author="federico.ferri.it@gmail.com">
     <description>An example plugin to demonstrate the usage of libPlugin</description>
     <command name="createObject">
         <description>Create an instance of the ExampleObject.</description>
