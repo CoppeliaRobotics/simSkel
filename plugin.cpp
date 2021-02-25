@@ -58,27 +58,27 @@ public:
 
     void onScriptStateDestroyed(int scriptID)
     {
-        for(auto obj : sim::Handle<ExampleObject>::find(scriptID))
-            delete sim::Handle<ExampleObject>::remove(obj);
+        for(auto obj : handles.find(scriptID))
+            delete handles.remove(obj);
     }
 
     void createObject(createObject_in *in, createObject_out *out)
     {
         auto obj = new ExampleObject;
 
-        out->handle = sim::Handle<ExampleObject>::add(obj, in->_scriptID);
+        out->handle = handles.add(obj, in->_scriptID);
     }
 
     void destroyObject(destroyObject_in *in, destroyObject_out *out)
     {
-        auto obj = sim::Handle<ExampleObject>::get(in->handle);
+        auto obj = handles.get(in->handle);
 
-        delete sim::Handle<ExampleObject>::remove(obj);
+        delete handles.remove(obj);
     }
 
     void setData(setData_in *in, setData_out *out)
     {
-        auto obj = sim::Handle<ExampleObject>::get(in->handle);
+        auto obj = handles.get(in->handle);
 
         if(!obj->seq.empty())
             sim::addLog(sim_verbosity_warnings, "current sequence not empty");
@@ -89,7 +89,7 @@ public:
 
     void compute(compute_in *in, compute_out *out)
     {
-        auto obj = sim::Handle<ExampleObject>::get(in->handle);
+        auto obj = handles.get(in->handle);
 
         obj->seq.push_back(obj->a + obj->b);
         obj->a = obj->b;
@@ -99,10 +99,13 @@ public:
 
     void getOutput(getOutput_in *in, getOutput_out *out)
     {
-        auto obj = sim::Handle<ExampleObject>::get(in->handle);
+        auto obj = handles.get(in->handle);
 
         out->output = obj->seq;
     }
+
+private:
+    sim::Handles<ExampleObject> handles;
 };
 
 SIM_PLUGIN(PLUGIN_NAME, PLUGIN_VERSION, Plugin)
