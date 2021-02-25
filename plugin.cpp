@@ -56,27 +56,29 @@ public:
         setBuildDate(BUILD_DATE);
     }
 
+    void onScriptStateDestroyed(int scriptID)
+    {
+        for(auto obj : sim::Handle<ExampleObject>::find(scriptID))
+            delete sim::Handle<ExampleObject>::remove(obj);
+    }
+
     void createObject(createObject_in *in, createObject_out *out)
     {
         auto obj = new ExampleObject;
 
-        out->handle = sim::Handle<ExampleObject>::str(obj);
+        out->handle = sim::Handle<ExampleObject>::add(obj, in->_scriptID);
     }
 
     void destroyObject(destroyObject_in *in, destroyObject_out *out)
     {
-        auto obj = sim::Handle<ExampleObject>::obj(in->handle);
-        if(!obj)
-            throw std::runtime_error("invalid object handle");
+        auto obj = sim::Handle<ExampleObject>::get(in->handle);
 
-        delete obj;
+        delete sim::Handle<ExampleObject>::remove(obj);
     }
 
     void setData(setData_in *in, setData_out *out)
     {
-        auto obj = sim::Handle<ExampleObject>::obj(in->handle);
-        if(!obj)
-            throw std::runtime_error("invalid object handle");
+        auto obj = sim::Handle<ExampleObject>::get(in->handle);
 
         if(!obj->seq.empty())
             sim::addLog(sim_verbosity_warnings, "current sequence not empty");
@@ -87,9 +89,7 @@ public:
 
     void compute(compute_in *in, compute_out *out)
     {
-        auto obj = sim::Handle<ExampleObject>::obj(in->handle);
-        if(!obj)
-            throw std::runtime_error("invalid object handle");
+        auto obj = sim::Handle<ExampleObject>::get(in->handle);
 
         obj->seq.push_back(obj->a + obj->b);
         obj->a = obj->b;
@@ -99,9 +99,7 @@ public:
 
     void getOutput(getOutput_in *in, getOutput_out *out)
     {
-        auto obj = sim::Handle<ExampleObject>::obj(in->handle);
-        if(!obj)
-            throw std::runtime_error("invalid object handle");
+        auto obj = sim::Handle<ExampleObject>::get(in->handle);
 
         out->output = obj->seq;
     }
