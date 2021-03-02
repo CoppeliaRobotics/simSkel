@@ -66,7 +66,7 @@ public:
     {
         auto obj = new ExampleObject;
 
-        out->handle = handles.add(obj, in->_scriptID);
+        out->handle = handles.add(obj, in->_.scriptID);
     }
 
     void destroyObject(destroyObject_in *in, destroyObject_out *out)
