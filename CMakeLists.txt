@@ -5,10 +5,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_MACOSX_RPATH 1)
 
 # uncomment following if plugin uses Qt:
-#find_package(Qt5Core REQUIRED)
-#find_package(Qt5Gui REQUIRED)
-#find_package(Qt5Widgets REQUIRED)
-#find_package(Qt5PrintSupport REQUIRED)
+#find_package(Qt5 COMPONENTS Core Gui Widgets PrintSupport REQUIRED)
 #set(CMAKE_AUTOMOC ON)
 #add_definitions(-DQT_COMPIL)
 
