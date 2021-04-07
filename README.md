@@ -9,7 +9,7 @@ With libPlugin, callbacks signature and documentation are specified using a sing
 1. Install required packages for [libPlugin](https://github.com/CoppeliaRobotics/libPlugin): see libPlugin's README
 2. Checkout and compile
 ```
-$ git clone --recursive https://github.com/CoppeliaRobotics/simExtPluginSkeletonNG.git
+$ git clone --recursive https://github.com/CoppeliaRobotics/simExtSkel.git
 $ cmake .
 $ cmake --build .
 ```
