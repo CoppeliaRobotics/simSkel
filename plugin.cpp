@@ -30,7 +30,7 @@
 #include "config.h"
 #include "plugin.h"
 #include "simPlusPlus/Plugin.h"
-#include "simPlusPlus/Handle.h"
+#include "simPlusPlus/Handles.h"
 #include "stubs.h"
 
 // an example data structure to hold data across multiple calls
@@ -40,9 +40,6 @@ struct ExampleObject
     int b = 0;
     std::vector<int> seq;
 };
-
-// conversion from C pointer to string handle and vice-versa:
-template<> std::string sim::Handle<ExampleObject>::tag() { return "Example.Object"; }
 
 class Plugin : public sim::Plugin
 {
@@ -105,7 +102,7 @@ public:
     }
 
 private:
-    sim::Handles<ExampleObject> handles;
+    sim::Handles<ExampleObject*> handles{"Example.Object"};
 };
 
 SIM_PLUGIN(PLUGIN_NAME, PLUGIN_VERSION, Plugin)
