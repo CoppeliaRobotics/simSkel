@@ -27,6 +27,9 @@
 // Federico Ferri <federico.ferri.it at gmail dot com>
 // -------------------------------------------------------------------
 
+#include <vector>
+#include <memory>
+
 #include "config.h"
 #include "plugin.h"
 #include "simPlusPlus/Plugin.h"
@@ -39,6 +42,8 @@ struct ExampleObject
     int a = 0;
     int b = 0;
     std::vector<int> seq;
+
+    using Ptr = std::shared_ptr<ExampleObject>;
 };
 
 class Plugin : public sim::Plugin
@@ -55,27 +60,27 @@ public:
 
     void onScriptStateDestroyed(int scriptID)
     {
-        for(auto obj : handles.find(scriptID))
-            delete handles.remove(obj);
+        for(const ExampleObject::Ptr &obj : handles.find(scriptID))
+            handles.remove(obj);
     }
 
     void createObject(createObject_in *in, createObject_out *out)
     {
-        auto obj = new ExampleObject;
+        ExampleObject::Ptr obj = std::make_shared<ExampleObject>();
 
         out->handle = handles.add(obj, in->_.scriptID);
     }
 
     void destroyObject(destroyObject_in *in, destroyObject_out *out)
     {
-        auto obj = handles.get(in->handle);
+        ExampleObject::Ptr obj = handles.get(in->handle);
 
-        delete handles.remove(obj);
+        handles.remove(obj);
     }
 
     void setData(setData_in *in, setData_out *out)
     {
-        auto obj = handles.get(in->handle);
+        ExampleObject::Ptr obj = handles.get(in->handle);
 
         if(!obj->seq.empty())
             sim::addLog(sim_verbosity_warnings, "current sequence not empty");
@@ -86,7 +91,7 @@ public:
 
     void compute(compute_in *in, compute_out *out)
     {
-        auto obj = handles.get(in->handle);
+        ExampleObject::Ptr obj = handles.get(in->handle);
 
         obj->seq.push_back(obj->a + obj->b);
         obj->a = obj->b;
@@ -96,13 +101,13 @@ public:
 
     void getOutput(getOutput_in *in, getOutput_out *out)
     {
-        auto obj = handles.get(in->handle);
+        ExampleObject::Ptr obj = handles.get(in->handle);
 
         out->output = obj->seq;
     }
 
 private:
-    sim::Handles<ExampleObject*> handles{"Example.Object"};
+    sim::Handles<ExampleObject::Ptr> handles{"Example.Object"};
 };
 
 SIM_PLUGIN(PLUGIN_NAME, PLUGIN_VERSION, Plugin)
