@@ -43,6 +43,7 @@ struct ExampleObject
     int b = 0;
     std::vector<int> seq;
 
+    // convenience alias for using shared_ptr
     using Ptr = std::shared_ptr<ExampleObject>;
 };
 
@@ -58,28 +59,38 @@ public:
         setBuildDate(BUILD_DATE);
     }
 
-    void onScriptStateDestroyed(int scriptID)
-    {
-        for(const ExampleObject::Ptr &obj : handles.find(scriptID))
-            handles.remove(obj);
-    }
-
     void createObject(createObject_in *in, createObject_out *out)
     {
+        // create a new ExampleObject (using shared pointers)
         ExampleObject::Ptr obj = std::make_shared<ExampleObject>();
 
+        // add to the list of handles, and return its handle
         out->handle = handles.add(obj, in->_.scriptID);
     }
 
     void destroyObject(destroyObject_in *in, destroyObject_out *out)
     {
+        // get the object by handle (will throw an exception if it doesn't
+        // exist; exception will show up as Lua errors)
         ExampleObject::Ptr obj = handles.get(in->handle);
 
+        // remove the object from the list of handles (will also cause object
+        // destruction if refcount drops to zero)
         handles.remove(obj);
+    }
+
+    void onScriptStateDestroyed(int scriptID)
+    {
+        // when a script ends, we usually want to destroy all objects created
+        // from within that script
+        for(const ExampleObject::Ptr &obj : handles.find(scriptID))
+            handles.remove(obj);
     }
 
     void setData(setData_in *in, setData_out *out)
     {
+        // an example method
+
         ExampleObject::Ptr obj = handles.get(in->handle);
 
         if(!obj->seq.empty())
@@ -91,6 +102,8 @@ public:
 
     void compute(compute_in *in, compute_out *out)
     {
+        // another example method
+
         ExampleObject::Ptr obj = handles.get(in->handle);
 
         obj->seq.push_back(obj->a + obj->b);
@@ -101,12 +114,15 @@ public:
 
     void getOutput(getOutput_in *in, getOutput_out *out)
     {
+        // another example method
+
         ExampleObject::Ptr obj = handles.get(in->handle);
 
         out->output = obj->seq;
     }
 
 private:
+    // the set of handles to ExampleObject
     sim::Handles<ExampleObject::Ptr> handles{"Example.Object"};
 };
 
