@@ -32,8 +32,8 @@
 
 #include "config.h"
 #include "plugin.h"
-#include "simPlusPlus/Plugin.h"
-#include "simPlusPlus/Handles.h"
+#include <simPlusPlus/Plugin.h>
+#include <simPlusPlus/Handles.h>
 #include "stubs.h"
 
 // an example data structure to hold data across multiple calls
