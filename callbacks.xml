@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="callbacks.xsl"?>
 
 <plugin name="Skel" author="federico.ferri.it@gmail.com">
-    <description>An example plugin to demonstrate the usage of libPlugin</description>
+    <description>An example plugin to demonstrate the usage of simStubsGen and simPlusPlus</description>
     <command name="createObject">
         <description>Create an instance of the ExampleObject.</description>
         <params>
