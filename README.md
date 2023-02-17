@@ -6,7 +6,7 @@ Callbacks signature and documentation are specified using a single XML file (cal
 
 ### Compiling
 
-1. Install required packages for simStubsGen: see the README file of simStubsGen.
+1. Install required packages for simStubsGen: see simStubsGen's [README](https://github.com/CoppeliaRobotics/include/blob/master/simStubsGen/README.md)
 2. Checkout, compile and install into CoppeliaSim:
 ```sh
 $ git clone https://github.com/CoppeliaRobotics/simExtSkel.git
