@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.11)
-project(simExtSkel)
+project(simSkel)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_MACOSX_RPATH 1)
@@ -28,5 +28,5 @@ coppeliasim_generate_stubs(${CMAKE_CURRENT_BINARY_DIR}/generated XML_FILE ${CMAK
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h ESCAPE_QUOTES)
 
-coppeliasim_add_plugin(simExtSkel SOURCES plugin.cpp)
-#target_link_libraries(simExtSkel Qt5::Core Qt5::Gui Qt5::Widgets Qt5::PrintSupport)
+coppeliasim_add_plugin(simSkel SOURCES plugin.cpp)
+#target_link_libraries(simSkel Qt5::Core Qt5::Gui Qt5::Widgets Qt5::PrintSupport)
