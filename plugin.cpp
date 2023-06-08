@@ -126,5 +126,5 @@ private:
     sim::Handles<ExampleObject::Ptr> handles{"Example.Object"};
 };
 
-SIM_PLUGIN(PLUGIN_NAME, PLUGIN_VERSION, Plugin)
+SIM_PLUGIN(Plugin)
 #include "stubsPlusPlus.cpp"
