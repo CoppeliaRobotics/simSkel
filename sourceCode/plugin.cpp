@@ -79,11 +79,11 @@ public:
         handles.remove(obj);
     }
 
-    void onScriptStateDestroyed(int scriptID)
+    void onScriptStateAboutToBeDestroyed(int scriptHandle)
     {
         // when a script ends, we usually want to destroy all objects created
         // from within that script
-        for(const ExampleObject::Ptr &obj : handles.find(scriptID))
+        for(const ExampleObject::Ptr &obj : handles.find(scriptHandle))
             handles.remove(obj);
     }
 
