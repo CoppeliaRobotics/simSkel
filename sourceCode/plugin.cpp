@@ -79,7 +79,7 @@ public:
         handles.remove(obj);
     }
 
-    void onScriptStateAboutToBeDestroyed(int scriptHandle)
+    void onScriptStateAboutToBeDestroyed(int scriptHandle, int scriptUid)
     {
         // when a script ends, we usually want to destroy all objects created
         // from within that script
