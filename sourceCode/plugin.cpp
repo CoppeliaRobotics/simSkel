@@ -54,9 +54,6 @@ public:
     {
         if(!registerScriptStuff())
             throw std::runtime_error("script stuff initialization failed");
-
-        setExtVersion("Example Plugin Skeleton");
-        setBuildDate(BUILD_DATE);
     }
 
     void createObject(createObject_in *in, createObject_out *out)
